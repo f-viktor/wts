@@ -36,17 +36,13 @@ func DecimalMain(s string) {
 
   // extract all numbers and group them by 1, 2 and 3
   numonly := reNaN.ReplaceAllString(s, "")
-  intarray = splitAfterN(numonly,1)
-  printDecodingArray(intarray)
-  callOffsets(intarray, offsetarray)
 
-  intarray = splitAfterN(numonly,2)
-  printDecodingArray(intarray)
-  callOffsets(intarray, offsetarray)
+  for i :=1 ; i<4; i++ {
+    intarray = splitAfterN(numonly,i)
+    printDecodingArray(intarray)
+    callOffsets(intarray, offsetarray)
+  }
 
-  intarray = splitAfterN(numonly,3)
-  printDecodingArray(intarray)
-  callOffsets(intarray, offsetarray)
 }
 
 // call decoding with all offsets
