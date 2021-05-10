@@ -9,7 +9,7 @@ import(
 // USm3fpXnKG5EUBx2ndxBDMPVciP5hGey2Jh4NDv6gmeo1LkMeiKrLJUUBk6Z
 
 func Base58Main(message string){
-  fmt.Println("\n[+]_Base58_Decode_"+strings.Repeat("_",len(message)))
+  fmt.Println("\n[>]_Base58_Decode_"+strings.Repeat("_",len(message)))
 
   b58DecodeMessage(message)
   message = b58stripUndesired(message)

@@ -7,9 +7,9 @@ Supply an encoded string from a security challenge, and I'll try to guess what i
 
 
 Decoders:
-Base32, Base64, base58, Base128, Rot(0-25, 13,47), URL,
+Base32, Base64, base58, Base128, Rot(0-25, 13,47), URL, Decimal, HTML,
 
-HTML, Decimal, Hexadecimal, binary, unicode, octal, Gzip,  morse, punycode ascii85, Uudecode, utf-9, utf-16, IDN, shift until all printable
+ Hexadecimal, binary, unicode, octal, Gzip,  morse, punycode ascii85, Uudecode, utf-9, utf-16, IDN, shift until all printable
 +https://en.wikipedia.org/wiki/Binary-to-text_encoding
 
 Hashes(Identify only):

@@ -11,7 +11,7 @@ import (
 
 func RotMain(s string) {
 
-  fmt.Println("\n[+]_Rot/Caesar_Decode_"+strings.Repeat("_",len(s)))
+  fmt.Println("\n[>]_Rot/Caesar_Decode_"+strings.Repeat("_",len(s)))
   for i := 0; i < 27; i++ {
 	 r := rotN(s,i)
    fmt.Printf("Rot%d => "+r+"\n", i)

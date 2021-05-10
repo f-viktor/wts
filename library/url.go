@@ -8,13 +8,13 @@ import(
 
 
 func URLMain(message string){
-  fmt.Println("\n[+]_URL_Decode_"+strings.Repeat("_",len(message)))
+  fmt.Println("\n[>]_URL_Decode_"+strings.Repeat("_",len(message)))
 
   // two quick ones
   message = urlDecodeMessage(message)
   // the double
   urlDecodeMessage(message)
-  message = forceDelimiter(message)
+  message = urlForceDelimiter(message)
   urlDecodeMessage(message)
 }
 
@@ -33,7 +33,7 @@ func urlDecodeMessage(message string) string {
 // insert % chars after every second character
 // if any of the resulting chars are invalid, the whole decode will failed
 // could add something that decodes per character
-func forceDelimiter(s string) string{
+func urlForceDelimiter(s string) string{
   for i := 0; i < len(s); i += 3 {
     s = s[:i] + "%" + s[i:]
   }

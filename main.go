@@ -6,7 +6,17 @@ import (
 
 //decoderFuncts := make([]interface{}, 3, 3)  could allow multiple types of functs
 // Add your custom decoders to this list, to get them invoked
-var decoderFuncts = [...]func(string){wts.Base64Main, wts.Base58Main, wts.Base32Main, wts.Base128Main, wts.URLMain, wts.RotMain, wts.DecimalMain}
+var decoderFuncts = [...]func(string){
+	wts.Base64Main,
+	wts.Base58Main,
+	wts.Base32Main,
+	wts.Base128Main,
+	wts.URLMain,
+	wts.RotMain,
+	wts.DecimalMain,
+	wts.HTMLMain,
+	wts.MorseMain,
+	wts.FrequencyMain}
 //var hashIdentifierFuncts = [...]func(string){wts.Base64Main}
 //var statisticFunctions = [...]func(string){wts.Base64Main}
 

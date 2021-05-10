@@ -8,7 +8,7 @@ import(
 
 
 func Base64Main(message string){
-  fmt.Println("\n[+]_Base64_Decode_"+strings.Repeat("_",len(message)))
+  fmt.Println("\n[>]_Base64_Decode_"+strings.Repeat("_",len(message)))
 
   b64DecodeMessage(message)
   message = b64stripUndesired(message)

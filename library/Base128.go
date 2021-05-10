@@ -11,7 +11,7 @@ import(
 
 
 func Base128Main(message string){
-  fmt.Println("\n[+]_Base128_Decode"+strings.Repeat("_",len(message)))
+  fmt.Println("\n[>]_Base128_Decode"+strings.Repeat("_",len(message)))
 
   b128DecodeMessage(message)
   leb128DecodeMessage(message)

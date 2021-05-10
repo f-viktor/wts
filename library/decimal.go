@@ -16,37 +16,40 @@ func DecimalMain(s string) {
 
   offsetarray := []int{0,'a','A',32,48}
 
-  fmt.Println("\n[+]_Decimal_Decode_"+strings.Repeat("_",len(s)))
+  fmt.Println("\n[>]_Decimal_Decode_"+strings.Repeat("_",len(s)))
   // match antyting that isnt a number
   reNaN := regexp.MustCompile(`[^0-9]+`)
   dec := reNaN.ReplaceAllString(s, " ")
   decarray := strings.Split(dec," ")
 
+
+  //convert to int array
   var intarray []int
   for _, item := range decarray {
     num, _ := strconv.Atoi(item)
     intarray = append(intarray, num)
   }
 
+  // print decode to decimal
   printDecodingArray(intarray)
   callOffsets(intarray, offsetarray)
 
-  intarray = splitAfterN(s,1)
+  // extract all numbers and group them by 1, 2 and 3
+  numonly := reNaN.ReplaceAllString(s, "")
+  intarray = splitAfterN(numonly,1)
   printDecodingArray(intarray)
   callOffsets(intarray, offsetarray)
 
-  intarray = splitAfterN(s,2)
+  intarray = splitAfterN(numonly,2)
   printDecodingArray(intarray)
   callOffsets(intarray, offsetarray)
 
-  intarray = splitAfterN(s,3)
+  intarray = splitAfterN(numonly,3)
   printDecodingArray(intarray)
   callOffsets(intarray, offsetarray)
 }
 
-
-
-
+// call decoding with all offsets
 func callOffsets(intarray []int, offsetarray []int){
   for _, item := range offsetarray{
     abcOffset(intarray,item)
