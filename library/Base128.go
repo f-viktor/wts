@@ -10,7 +10,7 @@ import(
 )
 
 
-func Base128main(message string){
+func Base128Main(message string){
   fmt.Println("\n[+]_Base128_Decode"+strings.Repeat("_",len(message)))
 
   b128DecodeMessage(message)

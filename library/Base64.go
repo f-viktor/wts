@@ -7,7 +7,7 @@ import(
 )
 
 
-func Base64main(message string){
+func Base64Main(message string){
   fmt.Println("\n[+]_Base64_Decode_"+strings.Repeat("_",len(message)))
 
   b64DecodeMessage(message)

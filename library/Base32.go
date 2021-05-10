@@ -7,7 +7,7 @@ import(
 )
 
 
-func Base32main(message string){
+func Base32Main(message string){
   fmt.Println("\n[+]_Base32_Decode"+strings.Repeat("_",len(message)))
 
   b32DecodeMessage(message)
