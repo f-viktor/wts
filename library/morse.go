@@ -9,7 +9,8 @@ import(
 
 
 func MorseMain(message string){
-  fmt.Println("\n[>]_Morse_Decode_"+strings.Repeat("_",len(message)))
+  sayHi("Morse Decode", message)
+
   freqMap := CountRunes(message)
 
   //has at least three types of characters but no more than 4
@@ -18,24 +19,25 @@ func MorseMain(message string){
     for _, item := range freqMap[:4]{
       regxp = regxp+string(item.Key)
     }
+    // remove everything but the most frequent 4 chars
+    reNaN := regexp.MustCompile(`[^`+regxp+`]+`)
+    dec := reNaN.ReplaceAllString(message, "")
+    fmt.Println("[+] Reduced to most frequent characters ",dec)
+
+    morseDecodeMessage(dec,freqMap, []string{".","-"," "," / "})
+    morseDecodeMessage(dec,freqMap, []string{"-","."," "," / "})
+    morseDecodeMessage(dec,freqMap, []string{".","-"," / "," "})
+    morseDecodeMessage(dec,freqMap, []string{"-","."," / "," "})
+
+  } else {
+    fmt.Println("[!] Morse decode requires 3 different type of characters long;short;delimiter (optional:newline)")
   }
-
-  // remove everything but the most frequent 4 chars
-  reNaN := regexp.MustCompile(`[^`+regxp+`]+`)
-  dec := reNaN.ReplaceAllString(message, "")
-  fmt.Println("[+] Reduced to most frequent characters ",dec)
-
-  morseDecodeMessage(dec,freqMap, []string{".","-"," "," / "})
-  morseDecodeMessage(dec,freqMap, []string{"-","."," "," / "})
-  morseDecodeMessage(dec,freqMap, []string{".","-"," / "," "})
-  morseDecodeMessage(dec,freqMap, []string{"-","."," / "," "})
-
-
 }
+
 
 func morseDecodeMessage(dec string, freqMap []frequency, layout []string) {
 
-
+  //change this to switcharoo
   // remap chars to .- / for th ee lib
   transformed := strings.Replace(dec, string(freqMap[0].Key), layout[0],-1)
   transformed = strings.Replace(transformed, string(freqMap[1].Key), layout[1],-1)
@@ -49,6 +51,6 @@ func morseDecodeMessage(dec string, freqMap []frequency, layout []string) {
   h := morse.NewHacker()
   morseCode, err := h.Decode(strings.NewReader(transformed))
   if err != nil {
-		  fmt.Println("[x] URL => "+string(morseCode))
-	} else {  fmt.Println("[√] URL => "+string(morseCode))}
+		  safePrintln("[x] URL => "+string(morseCode))
+	} else {  safePrintln("[√] URL => "+string(morseCode))}
 }

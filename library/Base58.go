@@ -3,13 +3,12 @@ package wts
 import(
   "fmt"
   "github.com/akamensky/base58"
-  "strings"
 )
 
 // USm3fpXnKG5EUBx2ndxBDMPVciP5hGey2Jh4NDv6gmeo1LkMeiKrLJUUBk6Z
 
 func Base58Main(message string){
-  fmt.Println("\n[>]_Base58_Decode_"+strings.Repeat("_",len(message)))
+  sayHi("Base58 Decode", message)
 
   b58DecodeMessage(message)
   message = b58stripUndesired(message)
@@ -24,8 +23,8 @@ func b58DecodeMessage(message string) {
   // Try  b58 decode
   decoded, err := base58.Decode(message)
   if err != nil {
-    fmt.Printf("[x] Base58 Flickr (failed/partial) => %s\n", string(decoded))
-  } else {  fmt.Println("[√] Base58 => "+string(decoded))}
+    safePrintln("[x] Base58 => "+ string(decoded))
+  } else {  safePrintln("[√] Base58 => "+ string(decoded))}
 
 }
 

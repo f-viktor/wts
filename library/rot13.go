@@ -5,18 +5,17 @@ package wts
 
 import (
   "fmt"
-  "strings"
 )
 
 
-func RotMain(s string) {
+func RotMain(message string) {
+  sayHi("Rot/Caesar Decode", message)
 
-  fmt.Println("\n[>]_Rot/Caesar_Decode_"+strings.Repeat("_",len(s)))
   for i := 0; i < 27; i++ {
-	 r := rotN(s,i)
+	 r := rotN(message,i)
    fmt.Printf("Rot%d => "+r+"\n", i)
   }
-  r := rotN(s,47)
+  r := rotN(message,47)
   fmt.Printf("Rot%d => "+r+"\n", 47)
 }
 

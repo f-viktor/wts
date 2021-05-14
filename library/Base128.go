@@ -4,14 +4,15 @@ package wts
 
 import(
   "fmt"
-  "strings"
+  "strconv"
   "errors"
   "ekyu.moe/leb128"
 )
 
 
 func Base128Main(message string){
-  fmt.Println("\n[>]_Base128_Decode"+strings.Repeat("_",len(message)))
+  sayHi("Base128 Decode", message)
+
 
   b128DecodeMessage(message)
   leb128DecodeMessage(message)
@@ -23,8 +24,8 @@ func b128DecodeMessage(message string) {
   // Try standard b128 decoding first
   decoded, err := b128Decode(message)
   if err != nil {
-    fmt.Printf("[x] Base128 (failed/partial) => %s\n", decoded)
-  } else {  fmt.Println("[√] Base128 => "+string(decoded))}
+    safePrintln("[x] Base128 => "+string(decoded))
+  } else {  safePrintln("[√] Base128 => "+string(decoded))}
 }
 
 func leb128DecodeMessage(message string) {
@@ -32,14 +33,14 @@ func leb128DecodeMessage(message string) {
   // Try unsigned LEB128 decoding (actually returns a number)
   udecoded, n := leb128.DecodeUleb128([]byte(message))
   if int(n) < len(message) {
-    fmt.Printf("[x] ULEB128 (failed/partial) => %s => %i \n", string(udecoded), udecoded)
-  } else {  fmt.Println("[√] ULEB128 => "+string(udecoded))}
+    safePrintln("[x] ULEB128 => "+ string(udecoded) +" => "+ strconv.FormatUint(udecoded,10))
+  } else {  safePrintln("[√] ULEB128 =>"+ string(udecoded) +" => "+ strconv.FormatUint(udecoded,10))}
 
   // Try signed LEB128 decoding (actually returns a number)
   sdecoded, n := leb128.DecodeSleb128([]byte(message))
   if int(n) < len(message) {
-    fmt.Printf("[x] SLEB128 (failed/partial) => %s => %i \n", string(sdecoded), sdecoded)
-  } else {  fmt.Println("[√] SLEB128 => "+string(sdecoded))}
+    safePrintln("[x] SLEB128 => "+ string(sdecoded) +" => "+ strconv.FormatInt(sdecoded,10))
+  } else {  safePrintln("[√] SLEB128 => "+ string(sdecoded) +" => "+ strconv.FormatInt(sdecoded,10))}
 }
 
 

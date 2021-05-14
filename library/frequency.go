@@ -2,7 +2,6 @@ package wts
 
 import(
   "fmt"
-  "strings"
   "sort"
 )
 
@@ -13,7 +12,7 @@ type frequency struct {
 }
 
 func FrequencyMain(message string){
-  fmt.Println("\n[>]_Frequency_Analysis_"+strings.Repeat("_",len(message)))
+  sayHi("Frequency Analysis", message)
 
   ordered := CountRunes(message)
 

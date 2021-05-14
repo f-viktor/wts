@@ -16,7 +16,8 @@ func DecimalMain(s string) {
 
   offsetarray := []int{0,'a','A',32,48}
 
-  fmt.Println("\n[>]_Decimal_Decode_"+strings.Repeat("_",len(s)))
+  sayHi("Decimal Decode", s)
+
   // match antyting that isnt a number
   reNaN := regexp.MustCompile(`[^0-9]+`)
   dec := reNaN.ReplaceAllString(s, " ")
@@ -54,12 +55,16 @@ func callOffsets(intarray []int, offsetarray []int){
 
 // use array as offset from base to create string
 func abcOffset(intarray []int, base int) {
-  fmt.Printf("Offset from '"+string(base)+"' Decode => ")
+  outp :="Offset from '"+string(base)+"' Decode => "
+  if base == 0 {
+    outp = "Offset from  "+strconv.Itoa(base)+"  Decode => "
+  }
+
   for _, item := range intarray {
     char := string(item+base)
-    fmt.Printf(char)
+    outp = outp + char
   }
-  fmt.Printf("\n")
+  safePrintln(outp)
 }
 
 // split into an integer after every N-th rune

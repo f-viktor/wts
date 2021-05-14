@@ -8,7 +8,7 @@ import(
 
 
 func Base32Main(message string){
-  fmt.Println("\n[>]_Base32_Decode"+strings.Repeat("_",len(message)))
+  sayHi("Base32 Decode",message)
 
   b32DecodeMessage(message)
   message = b32stripUndesired(message)
@@ -21,8 +21,8 @@ func b32DecodeMessage(message string) {
   // Try standard b32 decoding first
   decoded, err := base32.StdEncoding.DecodeString(message)
   if err != nil {
-    fmt.Printf("[x] Base32 (failed/partial) => %s\n", decoded)
-  } else {  fmt.Println("[√] Base32 => "+string(decoded))}
+    safePrintln("[x] Base32 (failed/partial) => "+ string(decoded))
+  } else {  safePrintln("[√] Base32 => "+string(decoded))}
 }
 
 // remove chars that are outside of the characterset
