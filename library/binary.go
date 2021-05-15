@@ -76,5 +76,5 @@ func binaryDecodeMessage(dec string) {
 
   if error {
 		  safePrintln("[x] Binary => [ "+decodedNums+" ] => " +decodedChars)
-	} else {  safePrintln("[x] Binary => [ "+decodedNums+" ] => " +decodedChars)}
+	} else {  safePrintln("[√] Binary => [ "+decodedNums+" ] => " +decodedChars)}
 }

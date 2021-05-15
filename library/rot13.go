@@ -35,7 +35,7 @@ func rotNgine(b rune,n int) rune {
 
 func rotN(message string, n int) string {
   p := []rune(message)
-	for i := 0; i < len(message); i++ {
+	for i := 0; i < len(p); i++ {
 		p[i] = rotNgine(p[i],n)
 	}
 	return string(p)

@@ -11,6 +11,7 @@ var decoderFuncts = [...]func(string){
 	wts.MorseMain,
 	wts.BinaryMain,
 	wts.DecimalMain,
+	wts.HexMain,
 	wts.HTMLMain,
 	wts.URLMain,
 	wts.Base32Main,

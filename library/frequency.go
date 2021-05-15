@@ -28,7 +28,6 @@ func CountRunes(s string) []frequency{
   ordered := orderBy(uniq)
 
 
-
   return ordered
 }
 

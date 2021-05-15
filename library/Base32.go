@@ -21,7 +21,7 @@ func b32DecodeMessage(message string) {
   // Try standard b32 decoding first
   decoded, err := base32.StdEncoding.DecodeString(message)
   if err != nil {
-    safePrintln("[x] Base32 (failed/partial) => "+ string(decoded))
+    safePrintln("[x] Base32 => "+ string(decoded))
   } else {  safePrintln("[√] Base32 => "+string(decoded))}
 }
 

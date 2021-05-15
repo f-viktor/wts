@@ -3,7 +3,7 @@ package wts
 import(
   "fmt"
   "strings"
-  //"regexp"
+  "regexp"
 )
 
 
@@ -37,16 +37,21 @@ func switcharoo (dec string, freqMap []frequency, layout []rune) string {
   return string(transformed)
 }
 
-// insert % chars after every second character
-// if any of the resulting chars are invalid, the whole decode will failed
-// could add something that decodes per character
+// insert delimiter chars after every frequency-th character
 func forceDelimiter(s string, frequency int, delimiter string) string{
-  for i := 0; i < len(s); i += frequency+len(delimiter) {
-    s = s[:i] + delimiter + s[i:]
-  }
-  s=s[1:]
+  //remove all spaces
+  space := regexp.MustCompile(`\s*`)
+  s = space.ReplaceAllString(s, "")
 
-  //fmt.Println("[?] Modified to " + string(s))
+  if frequency > 0 {
+    for i := 0; i < len(s); i += frequency+len(delimiter) {
+      s = s[:i] + delimiter + s[i:]
+    }
+  }
+  //s=s[1:]
+
+  //fmt.Println("[?] Modified to " + string(s))\
+  s = strings.TrimSpace(s) //if space was the delimiter, remove first (and last)
   return string(s)
 }
 
@@ -72,4 +77,18 @@ func safePrintln(message string) {
   //  message = space.ReplaceAllString(message, " ")
   }
   fmt.Println(message)
+}
+
+
+//removes everything that is not part of the allowed character lists
+func removeInvalid(dec string, validChars string) string {
+  wiped := dec // copy so we don't mess up the loop progress when removing elements
+    for _,c := range []rune(dec) {
+      isValidChar:=false
+      for _,v :=  range validChars {
+        if c == v {isValidChar=true}
+      }
+      if !isValidChar {wiped = strings.Replace(wiped, string(c), "", -1)}
+  }
+  return wiped
 }
