@@ -18,7 +18,8 @@ var decoderFuncts = [...]func(string){
 	wts.Base58Main,
 	wts.Base64Main,
 	wts.Base128Main,
-	wts.FrequencyMain}
+	wts.FrequencyMain,
+	wts.HashMain}
 //var hashIdentifierFuncts = [...]func(string){wts.Base64Main}
 //var statisticFunctions = [...]func(string){wts.Base64Main}
 

@@ -15,6 +15,10 @@ Base32, Base64, base58, Base128, Rot(0-25, 13,47), URL, Decimal, HTML, binary, m
 Hashes(Identify only):
 RC4, MD5, sha-1, sha-256,
 
+
+magic numbers
+png etc
+
 Statistics:
 Character frequency,  character set, length
 

@@ -23,7 +23,7 @@ func HexMain(message string){
     hexDecodeMessage(split) //split to 8 chars
   }
 
-  fmt.Println("[?] Switching enidianness")
+  fmt.Println("[+] Switching enidianness")
 
   split := switchEnidianness(message, 999999) // reverse the whole thing
   split = forceDelimiter(split, 2," ") // print each byte as reverse
